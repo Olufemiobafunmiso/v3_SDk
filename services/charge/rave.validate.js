@@ -24,7 +24,7 @@ function service(data, _rave) {
 		})
 		.then(params => {
           
-            params.public_key = _rave.getPublicKey(); 
+            // params.public_key = _rave.getPublicKey(); 
           
             var uri = `v3/charges/${params.flw_ref}/validate`
           

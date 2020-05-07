@@ -34,7 +34,7 @@ function service(data, _rave) {
 		.then(params => {
 
 
-			params.public_key = _rave.getPublicKey();
+			// params.public_key = _rave.getPublicKey();
 		
 			return _rave.request('v3/charges?type=mobile_money_uganda',params)
 		})

@@ -22,7 +22,7 @@ function service(data, _rave){
 		 
         // params.seckey = _rave.getSecretKey();
 		params.method = "GET";
-        var uri = `v3/banks/${params.country}?public_key=${_rave.getPublicKey()}`
+        var uri = `v3/banks/${params.country}`
         
         return _rave.request(uri,params)
         

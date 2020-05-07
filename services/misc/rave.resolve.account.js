@@ -5,7 +5,6 @@ const axios = require('axios');
 
 const spec =  morx.spec()
                 .build('account_bank', 'required:true, eg:044')
-                .build('public_key', 'required:true, eg:FLWPUBK-6c4e3dcb21282d44f907c9xxxxxxxxxx-X')
 				.build('account_number', 'required:true,validators:isNumeric, eg:06900021')
                 .end();
                 
