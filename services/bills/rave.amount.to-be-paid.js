@@ -1,48 +1,43 @@
 const morx = require('morx');
 const q = require('q');
 
+const spec = morx.spec()
+	.build('id', 'required:true, eg:BIL136')
+	.build('product_id', 'required:true, eg:AT152')
+	.end();
 
 
 
-
-const spec =  morx.spec()
-.build('id', 'required:true, eg:BIL136')                
-.build('product_id', 'required:true, eg:AT152')
-.end();
-
-                
-
-function service(data, _rave){
+function service(data, _rave) {
 
 	var d = q.defer();
-	q.fcall( () => {
+	q.fcall(() => {
 
-		var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
-		var params = validated.params;
-     
-		return  (params);
+			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
+			var params = validated.params;
 
-    })
-    .then(params => {
-  
+			return (params);
 
-        params.method= "GET"
-		return _rave.request(`v3/billers/${params.id}/products/${params.product_id}`, params)
-	})
-	.then( resp => {
+		})
+		.then(params => {
 
-		d.resolve(resp.body);
 
-	})
-	.catch( err => {
+			params.method = "GET"
+			return _rave.request(`v3/billers/${params.id}/products/${params.product_id}`, params)
+		})
+		.then(resp => {
 
-		d.reject(err);
+			d.resolve(resp.body);
 
-	});
+		})
+		.catch(err => {
+
+			d.reject(err);
+
+		});
 
 	return d.promise;
 
 }
 service.morxspc = spec;
 module.exports = service;
-

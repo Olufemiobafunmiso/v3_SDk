@@ -2,7 +2,7 @@ const morx = require('morx');
 const q = require('q');
 
 const spec = morx.spec()
-    
+
     .build('email', 'required:true, eg:ade_temi@icloud.com')
     .build('is_permanent', 'required:false, eg:true')
     .build('frequency', 'required:true, eg:4')
@@ -28,7 +28,7 @@ function service(data, _rave) {
 
         })
         .then(params => {
-            
+
             params.method = "POST";
             return _rave.request('v3/virtual-account-numbers', params)
         })

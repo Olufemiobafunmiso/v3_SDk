@@ -6,8 +6,8 @@ const encrypt = require('./encryp')
 
 var spec = morx.spec()
 	.build('type', 'required:true, eg:card')
-    .build('otp', 'required:true, eg:12345')
-    .build('flw_ref', 'required:true, eg:RVFC6477605CE934')
+	.build('otp', 'required:true, eg:12345')
+	.build('flw_ref', 'required:true, eg:RVFC6477605CE934')
 	.end();
 
 function service(data, _rave) {
@@ -23,20 +23,15 @@ function service(data, _rave) {
 
 		})
 		.then(params => {
-          
-            // params.public_key = _rave.getPublicKey(); 
-          
-            var uri = `v3/charges/${params.flw_ref}/validate`
-          
-			return _rave.request(uri,params)
+
+
+
+			var uri = `v3/charges/${params.flw_ref}/validate`
+
+			return _rave.request(uri, params)
 		})
 		.then(response => {
 
-			//console.log(response);
-
-			
-
-			
 			d.resolve(response.body);
 
 		})

@@ -1,22 +1,19 @@
 const morx = require('morx');
 const q = require('q');
-const encrypt = require('../charge/encryp')
-
-
 
 var spec = morx.spec()
-    .build('currency', 'required:true, eg:GHS')
-    .build('network', 'required:false, eg:MTN')
-    .build('order_id', 'required:USS_URG_893982923s2323')
-    .build('type', 'required:true, eg:mobile_money_ghana')
+	.build('currency', 'required:true, eg:GHS')
+	.build('network', 'required:false, eg:MTN')
+	.build('order_id', 'required:USS_URG_893982923s2323')
+	.build('type', 'required:true, eg:mobile_money_ghana')
 	.build('amount', 'required:true, eg:10')
 	.build('phone_number', 'required:false, eg:08030930236')
 	.build('email', 'required:true, eg:debowalefaulkner@gmail.com')
 	.build('fullname', 'required:false, eg:lawal')
 	.build('client_ip', 'required:false, eg:127.0.0.1')
 	.build('tx_ref', 'required:true, eg:FLW_y-443342')
-    .build('meta', 'required:false')
-    .build('device_fingerprint', 'required:false')
+	.build('meta', 'required:false')
+	.build('device_fingerprint', 'required:false')
 	.end();
 
 function service(data, _rave) {
@@ -35,14 +32,14 @@ function service(data, _rave) {
 
 
 			// params.public_key = _rave.getPublicKey();
-		
-			return _rave.request('v3/charges?type=ghana_mobile_money',params)
+
+			return _rave.request('v3/charges?type=ghana_mobile_money', params)
 		})
 		.then(response => {
 
-		
 
-			
+
+
 			d.resolve(response.body);
 
 		})

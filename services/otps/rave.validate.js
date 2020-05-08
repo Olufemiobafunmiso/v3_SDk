@@ -3,44 +3,42 @@ const q = require('q');
 
 
 
-const spec =  morx.spec()
-                  
-.build('reference', 'required:true, eg:CF-BARTER-20190420022611377491')
-.build('otp', 'required:true, eg:481208')
-.end();
+const spec = morx.spec()
 
-                
+	.build('reference', 'required:true, eg:CF-BARTER-20190420022611377491')
+	.build('otp', 'required:true, eg:481208')
+	.end();
 
-function service(data, _rave){
+
+
+function service(data, _rave) {
 
 	var d = q.defer();
-	q.fcall( () => {
+	q.fcall(() => {
 
-		var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
-		var params = validated.params;
-     
-		return  (params);
+			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
+			var params = validated.params;
 
-    })
-    .then(params => {
-  
-		return _rave.request(`v3/otps/${params.reference}/validate`, params)
-	})
-	.then( resp => {
+			return (params);
 
-		d.resolve(resp.body);
+		})
+		.then(params => {
 
-	})
-	.catch( err => {
+			return _rave.request(`v3/otps/${params.reference}/validate`, params)
+		})
+		.then(resp => {
 
-		d.reject(err);
+			d.resolve(resp.body);
 
-	});
+		})
+		.catch(err => {
+
+			d.reject(err);
+
+		});
 
 	return d.promise;
 
 }
 service.morxspc = spec;
 module.exports = service;
-
-

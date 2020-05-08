@@ -10,15 +10,14 @@ var spec = morx.spec()
     .end();
 
 function service(data, _rave) {
-  
+
 
     var d = q.defer();
 
     q.fcall(() => {
-            // console.log("hellooo", data);
-
+           
             var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
-            // console.log(validated)
+         
             var params = {}
             var params = validated.params;
 
@@ -54,4 +53,3 @@ function service(data, _rave) {
 }
 service.morxspc = spec;
 module.exports = service;
-

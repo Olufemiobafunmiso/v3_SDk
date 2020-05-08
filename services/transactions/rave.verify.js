@@ -9,7 +9,7 @@ const spec = morx.spec()
     .end();
 
 function service(data, _rave) {
-  
+
 
     var d = q.defer();
 
@@ -28,14 +28,11 @@ function service(data, _rave) {
         .then(params => {
 
 
-
-            // params.seckey = _rave.getSecretKey();
             params.method = "GET"
             return _rave.request(`v3/transactions/${params.tx_ref}/verify`, params)
         })
         .then(response => {
 
-            // console.log(response);
             d.resolve(response.body);
 
 
@@ -53,5 +50,3 @@ function service(data, _rave) {
 }
 service.morxspc = spec;
 module.exports = service;
-
-

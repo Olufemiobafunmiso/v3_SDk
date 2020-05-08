@@ -1,7 +1,5 @@
 const morx = require('morx');
 const q = require('q');
-const encrypt = require('./encryp')
-
 
 var spec = morx.spec()
     .build('account_bank', 'required:true, eg:00000')
@@ -34,16 +32,11 @@ function service(data, _rave) {
 		})
 		.then(params => {
           
-            // params.public_key = _rave.getPublicKey(); 
+          
 			return _rave.request('v3/charges?type=debit_uk_account',params)
 		})
 		.then(response => {
 
-			//console.log(response);
-
-			
-
-			
 			d.resolve(response.body);
 
 		})
