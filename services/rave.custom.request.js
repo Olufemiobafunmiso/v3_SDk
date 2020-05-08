@@ -2,11 +2,7 @@ var morx = require('morx');
 
 var q = require('q');
 
-
-
 function newRefund(path, data, _rave) {
-
-
 
     var d = q.defer();
 

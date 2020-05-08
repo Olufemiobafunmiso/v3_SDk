@@ -33,19 +33,19 @@ const Rave = function (public_key, public_secret, base_url_or_production_flag) {
     this.Charge = new charge(ravebase);
     this.Ebills = new ebills(ravebase);
     this.Misc = new misc(ravebase);
-    this.Mobile_money = new mobile_money(ravebase);
+    this.MobileMoney = new mobile_money(ravebase);
     this.security = security;
     this.CustomRequest = new custom(ravebase);
     this.Otps = new otps(ravebase);
-    this.Payment_plan = new payment_plan(ravebase);
+    this.PaymentPlan = new payment_plan(ravebase);
     this.Settlement = new settlement(ravebase);
     this.Subscription = new subscription(ravebase);
     this.Subaccount = new subaccount(ravebase);
     this.Tokenized = new tokenized(ravebase);
     this.Transaction = new transaction(ravebase);
     this.Transfer = new transfer(ravebase);
-    this.Virtual_acct = new virtual_acct(ravebase);
-    this.Virtual_card = new virtual_card(ravebase);
+    this.VirtualAcct = new virtual_acct(ravebase);
+    this.VirtualCard = new virtual_card(ravebase);
 
     this.getIntegrityHash = function (data) {
         return ravebase.getIntegrityHash(data);
