@@ -10,7 +10,6 @@ var spec = morx.spec()
 	.build('suggested_auth', 'required:false, eg:VBVSECURECODE')
 	.build('country', 'required:false, eg:NG')
 	.build('subaccounts', 'required:false')
-	.build('type', 'required:true, eg:card')
 	.build('cvv', 'required:false, eg:544')
 	.build('amount', 'required:true, eg:10')
 	.build('phone_number', 'required:false, eg:08030930236')
@@ -36,7 +35,7 @@ function service(data, _rave) {
 
 	q.fcall(() => {
 
-			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
+			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT, {throw_error:true});
 			var params = validated.params;
 
 			return (params);

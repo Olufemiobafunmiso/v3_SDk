@@ -29,7 +29,7 @@ function service(data, _rave) {
 		})
 		.then(params => {
 
-			console.log(params)
+			// console.log(params)
 			return _rave.request('v3/ebills', params)
 		})
 		.then(resp => {

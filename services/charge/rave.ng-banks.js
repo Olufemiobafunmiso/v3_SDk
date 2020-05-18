@@ -7,7 +7,6 @@ var spec = morx.spec()
 	.build('account_bank', 'required:true, eg:00000')
 	.build('account_number', 'required:true, eg:0000000000')
 	.build('currency', 'required:true, eg:GBP')
-	.build('type', 'required:true, eg:card')
 	.build('amount', 'required:true, eg:10')
 	.build('phone_number', 'required:false, eg:08030930236')
 	.build('email', 'required:true, eg:debowalefaulkner@gmail.com')
@@ -19,7 +18,6 @@ var spec = morx.spec()
 	.build('device_fingerprint', 'required:false')
 	.build('bvn', 'required:false')
 	.build('passcode', 'required:false')
-	.build('type', 'required:true eg:ussd')
 	.end();
 
 function service(data, _rave) {
@@ -28,7 +26,7 @@ function service(data, _rave) {
 
 	q.fcall(() => {
 
-			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
+			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT, {throw_error:true});
 			var params = validated.params;
 
 			return (params);

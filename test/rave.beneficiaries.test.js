@@ -23,7 +23,7 @@ describe("#Rave Beneficiaries", function () {
     var ravebase = new base(process.env.PUBLIC_KEY, process.env.SECRET_KEY, process.env.PRODUCTION_FLAG);
     var beneficiariesInstance = new beneficiaries(ravebase);
 
-    it("should create ", async function () {
+    it("should create Beneficiary", async function () {
         this.timeout(10000);
 
         var payload = {

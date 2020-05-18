@@ -5,7 +5,6 @@ const encrypt = require('./encryp')
 
 var spec = morx.spec()
 	.build('currency', 'required:true, eg:GBP')
-	.build('type', 'required:true, eg:card')
 	.build('account_bank', 'required:true')
 	.build('amount', 'required:true, eg:10')
 	.build('phone_number', 'required:false, eg:08030930236')
@@ -28,7 +27,7 @@ function service(data, _rave) {
 
 	q.fcall(() => {
 
-			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
+			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT, {throw_error:true});
 			var params = validated.params;
 
 			return (params);

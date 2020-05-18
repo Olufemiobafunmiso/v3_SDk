@@ -19,7 +19,7 @@ function service(data, _rave) {
 	var d = q.defer();
 	q.fcall(() => {
 
-			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT);
+			var validated = morx.validate(data, spec, _rave.MORX_DEFAULT,  {throw_error:true});
 			var params = validated.params;
 
 			return (params);
