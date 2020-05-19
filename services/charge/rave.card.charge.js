@@ -2,7 +2,6 @@ const morx = require('morx');
 const q = require('q');
 const encrypt = require('./encryp')
 
-
 var spec = morx.spec()
 	.build('enckey', 'required:true, eg:611d0eda25a3c931863d92c4')
 	.build('card_number', 'required:true,validators:isNumeric, eg:5590131743294314')
@@ -49,30 +48,24 @@ function service(data, _rave) {
 			if (params.include_integrity_hash) {
 
 				delete params.include_integrity_hash;
-				// console.log("params!!!", params);
+		
 				var integrity_hash = _rave.getIntegrityHash(params, _rave.getPublicKey(), _rave.getSecretKey());
 				params.QUERY_STRING_DATA = JSON.parse(JSON.stringify(params));
 				params.QUERY_STRING_DATA.integrity_hash = integrity_hash;
-				// console.log(params);
+		
 			}
 
 			params.str = JSON.stringify(params)
 
-			// console.log(params.str);
+			
 			var encrypted = encrypt(params.enckey, params.str);
 			var payload = {};
 			payload.public_key = _rave.getPublicKey();
 			payload.client = encrypted;
-			// payload.alg = '3DES-24';
-			// payload=JSON.stringify(payload)
-			// console.log(payload);
-			return _rave.request('v3/charges', payload)
+	
+			return _rave.request('v3/charges?type=card', payload)
 		})
 		.then(response => {
-
-			//console.log(response);
-
-
 
 
 			d.resolve(response.body);
