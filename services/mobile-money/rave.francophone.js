@@ -2,18 +2,15 @@ const morx = require('morx');
 const q = require('q');
 
 var spec = morx.spec()
-	.build('currency', 'required:true, eg:ZMW')
-	.build('network', 'required:false, eg:MTN')
-	.build('order_id', 'required:USS_URG_893982923s2323')
+	.build('currency', 'required:true, eg:XAF')
 	.build('amount', 'required:true, eg:10')
-	.build('phone_number', 'required:false, eg:08030930236')
+	.build('phone_number', 'required:true, eg:08030930236')
 	.build('email', 'required:true, eg:debowalefaulkner@gmail.com')
 	.build('fullname', 'required:false, eg:lawal')
 	.build('client_ip', 'required:false, eg:127.0.0.1')
 	.build('tx_ref', 'required:true, eg:FLW_y-443342')
 	.build('meta', 'required:false')
 	.build('device_fingerprint', 'required:false')
-	.build('voucher', 'required:false')
 	.end();
 
 function service(data, _rave) {
@@ -30,7 +27,8 @@ function service(data, _rave) {
 		})
 		.then(params => {
 
-			return _rave.request('v3/charges?type=mobile_money_zambia', params)
+
+			return _rave.request('v3/charges?type=mobile_money_franco', params)
 		})
 		.then(response => {
 
