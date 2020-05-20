@@ -5,7 +5,7 @@ const encrypt = require('./encryp')
 
 var spec = morx.spec()
 	.build('currency', 'required:true, eg:GBP')
-	.build('account_bank', 'required:true')
+	.build('account_bank', 'required:false')
 	.build('amount', 'required:true, eg:10')
 	.build('phone_number', 'required:false, eg:08030930236')
 	.build('email', 'required:true, eg:debowalefaulkner@gmail.com')

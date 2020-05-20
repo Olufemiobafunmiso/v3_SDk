@@ -26,7 +26,7 @@ function service(data, _rave) {
 
 
 
-			var uri = `v3/charges/${params.flw_ref}/validate`
+			var uri = `v3/charges/validate`
 
 			return _rave.request(uri, params)
 		})

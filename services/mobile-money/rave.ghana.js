@@ -31,7 +31,7 @@ function service(data, _rave) {
 
 			// params.public_key = _rave.getPublicKey();
 
-			return _rave.request('v3/charges?type=ghana_mobile_money', params)
+			return _rave.request('/v3/charges?type=mobile_money_ghana', params)
 		})
 		.then(response => {
 

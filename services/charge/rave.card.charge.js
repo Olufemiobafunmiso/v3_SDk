@@ -67,7 +67,6 @@ function service(data, _rave) {
 		})
 		.then(response => {
 
-
 			d.resolve(response.body);
 
 		})

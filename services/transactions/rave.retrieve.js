@@ -1,21 +1,18 @@
 const morx = require('morx');
 const q = require('q');
 
-
 var spec = morx.spec()
+				.end();
 
-	.end();
-
-
-function service(_rave) {
+function service(data,_rave) {
 
 	var d = q.defer();
 
 	q.fcall(() => {
 
-			var validated = morx.validate(spec, _rave.MORX_DEFAULT);
+			var validated = morx.validate(data,spec, _rave.MORX_DEFAULT);
 			var params = validated.params;
-		
+
 			return params
 
 
@@ -24,7 +21,7 @@ function service(_rave) {
 
 			// params.seckey = _rave.getSecretKey();
 			params.method = "GET";
-			var uri = `v3/transactions`
+			var uri = `/v3/transactions`
 
 			return _rave.request(uri, params)
 
