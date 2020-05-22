@@ -2,6 +2,9 @@ const morx = require('morx');
 const q = require('q');
 
 var spec = morx.spec()
+.build('status', 'required:false, eg:failed')
+
+
 				.end();
 
 function service(data,_rave) {
@@ -19,7 +22,7 @@ function service(data,_rave) {
 		})
 		.then(params => {
 
-			// params.seckey = _rave.getSecretKey();
+			
 			params.method = "GET";
 			var uri = `/v3/transactions`
 

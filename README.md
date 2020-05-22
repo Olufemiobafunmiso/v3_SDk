@@ -972,3 +972,188 @@ View_Transaction_Timeline();
 ```
 
 ## TRANSACTIONS
+####```Get all transactions```
+This describes how to fetch all transactions on your account
+
+```javascript
+
+const Ravepay = require('flutterwave_node_3');
+
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
+
+
+
+const fetch_all_transactions = async () => {
+
+    try {
+        const payload = {
+            "from": "2020-01-01",
+            "to": "2020-05-5",
+            "page": 1,
+            "status": "failed",
+            "currency": "NGN"
+        }
+        const response = await rave.Transaction.fetch(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+fetch_all_transactions();
+
+```
+
+###```Get transaction fee```
+This describes how to get transaction fees
+
+```javascript
+
+const Ravepay = require('flutterwave_node_3');
+
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
+
+
+const get_fee = async () => {
+
+    try {
+        const payload = {
+            "amount": "1000",
+            "currency": "NGN"
+        }
+        const response = await rave.Transaction.fee(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+get_fee();
+
+
+
+```
+
+###```Resend transaction webhook	```
+This describes how to resend a failed transaction webhook to your server
+
+```javascript
+const Ravepay = require('flutterwave_node_3');
+
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
+
+const resendHook = async () => {
+
+    try {
+        const payload = {
+            "tx_ref": "rave-123wsvgfwefcwsfc456"
+        }
+        const response = await rave.Transaction.resend_hooks(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+resendHook();
+
+```
+
+###```Transaction refund```
+This describes how to initiate a transaction refund
+
+```javascript
+const Ravepay = require('flutterwave_node_3');
+
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
+
+
+const refund = async () => {
+
+    try {
+        const payload = {
+            "flw_ref": "FLW-M03K-c51e3f9074e0287bde2c2b5feb416f70",
+            "amount":50
+        }
+        
+        const response = await rave.Transaction.refund(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+refund();
+
+
+```
+
+
+###```Verify transaction```
+
+This describes how to verify transactions using the transaction reference tx_ref
+
+```javascript
+const Ravepay = require('flutterwave_node_3');
+
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
+
+
+
+const verifyTrans = async () => {
+
+    try {
+        const payload = {
+            "tx_ref": "rave-123wsvgfwefcwsfc456"
+        }
+
+        const response = await rave.Transaction.verify(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+verifyTrans();
+
+```
+
+###```View transaction timeline```
+This describes how to view Transaction Timeline
+
+```javascript
+const Ravepay = require('flutterwave_node_3');
+
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
+
+
+
+const verifyTrans = async () => {
+
+    try {
+        const payload = {
+            "tx_ref": "rave-123wsvgfwefcwsfc456"
+        }
+
+        const response = await rave.Transaction.verify(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+verifyTrans();
+
+```
