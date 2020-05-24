@@ -8,9 +8,7 @@
 
  You can get your PUBLICK_KEY and SECRET_KEY from the Rave dashboard. 
 
- Go [here](https://flw.
-
-flutterwave.com/dashboard/settings/apis) to get your API Keys. 
+ Go [here](https://rave.flutterwave.com/dashboard/settings/apis) to get your API Keys. 
  
  Turn on Sandbox to get TEST API KEYS and Turn off Sandbox to get LIVE API KEYS
 
