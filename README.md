@@ -138,8 +138,8 @@ const payload = {
     "expiry_year": "21",
     "currency": "NGN",
     "amount": "1000",
-    "fullname": "Ekene Eze",
-    "email": "ekene@flw.com",
+    "fullname": "Olufemi Obafunmiso",
+    "email": "olufemi@flw.com",
     "phone_number": "0902620185",
     "enckey": "611d0eda25a3c931863d92c4",
     "tx_ref": "MC-3243e", // should be unique for every transaction
@@ -204,9 +204,9 @@ const charge_ng_acct = async () => {
             "account_bank": "044",
             "account_number": "0690000037",
             "currency": "NGN",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "0902620185",
-            "fullname": "Ekene Eze"
+            "fullname": "Olufemi Obafunmiso"
         }
 
         const response = await flw.Charge.ng(payload, rave)
@@ -249,9 +249,9 @@ const charge_uk_acct = async () => {
             "account_bank": "00000",
             "account_number": "0000000000",
             "currency": "GBP",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "0902620185",
-            "fullname": "Ekene Eze"
+            "fullname": "Olufemi Obafunmiso"
         }
 
         const response = await flw.Charge.uk(payload, rave)
@@ -288,11 +288,11 @@ const ach_payment = async () => {
         "type": "ach_payment",
         "currency": "ZAR",
         "country": "SA",
-        "email": "ekene@flw.com",
+        "email": "olufemi@flw.com",
         "phone_number": "0902620185",
-        "fullname": "Ekene Eze",
+        "fullname": "Olufemi Obafunmiso",
         "client_ip": "154.123.220.1",
-        "redirect_url": "http://ekeneeze.com/u/payment-completed",
+        "redirect_url": "http://olufemiobafunmiso.com/u/payment-completed",
         "device_fingerprint": "62wd23423rq324323qew1",
         "meta": {
             "flightID": "123949494DC"
@@ -384,9 +384,9 @@ const ussd = async () => {
                         "amount": "1500",
                         "type": "qr",
                         "currency": "NGN",
-                        "email": "ekene@flw.com",
+                        "email": "olufemi@flw.com",
                         "phone_number": "054709929220",
-                        "fullname": "Ekene Eze"
+                        "fullname": "Olufemi Obafunmiso"
                 }
                 const response = await flw.Charge.ussd(payload, rave)
                 console.log(response);
@@ -422,9 +422,9 @@ const charg_voucher = async () => {
                     "type": "voucher_payment",
                     "currency": "ZAR",
                     "pin": "19203804939000",
-                    "email": "ekene@flw.com",
+                    "email": "olufemi@flw.com",
                     "phone_number": "0902620185",
-                    "fullname": "Ekene Eze"
+                    "fullname": "Olufemi Obafunmiso"
                 }
                 const response = await flw.Charge.voucher(payload, rave)
                 console.log(response);
@@ -466,9 +466,9 @@ const mpesa =  async () =>{
             "tx_ref": "MC-15852113s09v5050e8",
             "amount": "1500",
             "currency": "KES",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "054709929220",
-            "fullname": "Ekene Eze"
+            "fullname": "Olufemi Obafunmiso"
     }
 
        const response =  await flw.MobileMoney.mpesa(payload, rave)
@@ -507,7 +507,7 @@ const Gh_mobilemoney =  async () =>{
             "amount": "1500",
             "currency": "GHS",
             "network":"MTN",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "054709929220",
             "fullname": "John Madakin"
         }
@@ -549,7 +549,7 @@ const rw_mobile_money =  async ()=>{
             "order_id": "USS_URG_893982923s2323",
             "amount": "1500",
             "currency": "RWF",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "054709929220",
             "fullname": "John Madakin"
         }
@@ -586,10 +586,10 @@ const ug_mobile_money =  async () =>{
         const payload = {
             "tx_ref": "MC-1585230950508",
             "amount": "1500",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "054709929220",
             "currency": "UGX",
-            "fullname": "Ekene Eze",
+            "fullname": "Olufemi Obafunmiso",
             "redirect_url": "https://rave-webhook.herokuapp.com/receivepayment",
             "voucher": "128373",
             "network": "MTN"
@@ -627,9 +627,9 @@ const franc_mobile_money =  async () =>{
             "tx_ref": "MC-158523s09v5050e8",
             "amount": "1500",
             "currency": "XAF",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "054709929220",
-            "fullname": "Ekene Eze"
+            "fullname": "Olufemi Obafunmiso"
         }
        const response =  await flw.MobileMoney.franco_phone(payload, rave)
        console.log(response);
@@ -664,9 +664,9 @@ const zambia_mobile_money =  async () =>{
             "tx_ref": "MC-15852113s09v5050e8",
             "amount": "1500",
             "currency": "ZMW",
-            "email": "ekene@flw.com",
+            "email": "olufemi@flw.com",
             "phone_number": "054709929220",
-            "fullname": "Ekene Eze",
+            "fullname": "Olufemi Obafunmiso",
             "order_id": "URF_MMGH_1585323540079_5981535"
         }
        const response =  await flw.MobileMoney.zambia(payload, rave)
@@ -787,8 +787,8 @@ const charge_bulk = async () => {
                     "country": "NG",
                     "amount": 3500,
                     "email": "user@example.com",
-                    "first_name": "Ekene",
-                    "last_name": "Eze",
+                    "first_name": "Olufemi",
+                    "last_name": "Obafunmiso",
                     "ip": "pstmn",
                     "tx_ref": "akhlm-pstmn-blkchrg-xx6"
                 },
