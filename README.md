@@ -2109,7 +2109,7 @@ cancelSubscription();
 ```
 
 
-### ```Cancel a subscription```
+### ```Activate a subscription```
 
 This describes how to activate a subscription
 
