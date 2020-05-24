@@ -5,11 +5,11 @@ const spec = morx.spec()
 
     .build('email', 'required:true, eg:ade_temi@icloud.com')
     .build('is_permanent', 'required:false, eg:true')
-    .build('frequency', 'required:true, eg:4')
-    .build('duration', 'required:true, eg:4')
+    .build('frequency', 'required:false, eg:4')
+    .build('duration', 'required:false, eg:4')
     .build('narration', 'required:false, eg:New card created')
     .build('tx_ref', 'required:true, eg:jhn-mdkn-10192029920')
-    .build('amount', 'required:true, eg:5000')
+    .build('amount', 'required:false, eg:5000')
     .end();
 
 function service(data, _rave) {

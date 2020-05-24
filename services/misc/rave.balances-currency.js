@@ -27,7 +27,7 @@ function service(data, _rave) {
 		})
 		.then(response => {
 
-			d.resolve(response);
+			d.resolve(response.body);
 
 		})
 		.catch(err => {

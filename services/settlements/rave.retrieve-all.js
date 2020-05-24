@@ -7,13 +7,13 @@ const spec = morx.spec()
 	.end();
 
 
-function service(_rave) {
+function service(data,_rave) {
 
 	const d = q.defer();
 
 	q.fcall(() => {
 
-			const validated = morx.validate(spec, _rave.MORX_DEFAULT);
+			const validated = morx.validate(data,spec, _rave.MORX_DEFAULT);
 			const params = validated.params;
 
 			return params

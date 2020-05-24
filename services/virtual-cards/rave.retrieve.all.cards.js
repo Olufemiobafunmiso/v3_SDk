@@ -6,13 +6,13 @@ var spec = morx.spec()
 
 	.end();
 
-function service(_rave) {
+function service(data,_rave) {
 
 	var d = q.defer();
 
 	q.fcall(() => {
 
-			var validated = morx.validate(spec, _rave.MORX_DEFAULT);
+			var validated = morx.validate(spec,data, _rave.MORX_DEFAULT);
 			var params = validated.params;
 
 			return params
