@@ -139,8 +139,7 @@ const payload = {
     "currency": "NGN",
     "amount": "1000",
     "fullname": "Ekene Eze",
-    "email": "ekene@flw.
-com",
+    "email": "ekene@flw.com",
     "phone_number": "0902620185",
     "enckey": "611d0eda25a3c931863d92c4",
     "tx_ref": "MC-3243e", // should be unique for every transaction
@@ -184,6 +183,7 @@ flw.Charge.card(payload)
 
 
 ### ```Charge Nigerian bank accounts```
+
 This describes how to charge Nigerian bank accounts using Flutterwave
 
 ```javascript
@@ -204,8 +204,7 @@ const charge_ng_acct = async () => {
             "account_bank": "044",
             "account_number": "0690000037",
             "currency": "NGN",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "0902620185",
             "fullname": "Ekene Eze"
         }
@@ -228,6 +227,7 @@ charge_ng_acct();
 
 ### ```Charge UK bank accounts```
 
+
 This describes how to charge UK bank accounts using Flutterwave
 
 ```javascript
@@ -249,8 +249,7 @@ const charge_uk_acct = async () => {
             "account_bank": "00000",
             "account_number": "0000000000",
             "currency": "GBP",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "0902620185",
             "fullname": "Ekene Eze"
         }
@@ -270,6 +269,7 @@ charge_uk_acct();
 
 
 #### ``` ACH Payement```
+
 This shows you how to accept South African ACH charges from your customers
 
 ```javascript
@@ -288,8 +288,7 @@ const ach_payment = async () => {
         "type": "ach_payment",
         "currency": "ZAR",
         "country": "SA",
-        "email": "ekene@flw.
-com",
+        "email": "ekene@flw.com",
         "phone_number": "0902620185",
         "fullname": "Ekene Eze",
         "client_ip": "154.123.220.1",
@@ -315,6 +314,7 @@ ach_payment();
 
 
 #### ``` Bank Transfer```
+
 This describes to allow your customer to pay via a NIP (NIBBS Instant Payment) transfer.
 
 ```javascript
@@ -361,6 +361,7 @@ bank_trf();
 ```
 
 #### ``` USSD```
+
 This describes how to collect payments via ussd
 
 ```javascript
@@ -383,8 +384,7 @@ const ussd = async () => {
                         "amount": "1500",
                         "type": "qr",
                         "currency": "NGN",
-                        "email": "ekene@flw.
-com",
+                        "email": "ekene@flw.com",
                         "phone_number": "054709929220",
                         "fullname": "Ekene Eze"
                 }
@@ -402,6 +402,7 @@ ussd();
 ```
 
 #### ``` Charge via Voucher payment```
+
 This describes how to collect ZAR payments offline using Vouchers
 
 ```javascript
@@ -421,8 +422,7 @@ const charg_voucher = async () => {
                     "type": "voucher_payment",
                     "currency": "ZAR",
                     "pin": "19203804939000",
-                    "email": "ekene@flw.
-com",
+                    "email": "ekene@flw.com",
                     "phone_number": "0902620185",
                     "fullname": "Ekene Eze"
                 }
@@ -447,7 +447,7 @@ charg_voucher();
 ## MOBILE MONEY
 
 
-###```Mpesa```
+### ```Mpesa```
 This describes how to collect payments via Mpesa.
 
 
@@ -466,8 +466,7 @@ const mpesa =  async () =>{
             "tx_ref": "MC-15852113s09v5050e8",
             "amount": "1500",
             "currency": "KES",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "054709929220",
             "fullname": "Ekene Eze"
     }
@@ -486,7 +485,8 @@ mpesa();
 
 
 
-###```Ghana mobile money```
+### ```Ghana mobile money```
+
 
 This describes how to collect payments via Ghana mobile money.
 
@@ -507,8 +507,7 @@ const Gh_mobilemoney =  async () =>{
             "amount": "1500",
             "currency": "GHS",
             "network":"MTN",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "054709929220",
             "fullname": "John Madakin"
         }
@@ -523,8 +522,13 @@ com",
  
  
 Gh_mobilemoney();
+
+
 ```
-###```Rwanda mobile money```
+
+###  ```Rwanda mobile money```
+
+
 This describes how to collect payments via Rwanda mobile money.
 
 
@@ -545,8 +549,7 @@ const rw_mobile_money =  async ()=>{
             "order_id": "USS_URG_893982923s2323",
             "amount": "1500",
             "currency": "RWF",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "054709929220",
             "fullname": "John Madakin"
         }
@@ -562,7 +565,11 @@ com",
  
 rw_mobile_money();
 ```
-###```Uganda mobile money```
+
+
+### ```Uganda mobile money```
+
+
 This describes how to collect payments via Uganda mobile money.
 
 
@@ -579,8 +586,7 @@ const ug_mobile_money =  async () =>{
         const payload = {
             "tx_ref": "MC-1585230950508",
             "amount": "1500",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "054709929220",
             "currency": "UGX",
             "fullname": "Ekene Eze",
@@ -600,7 +606,11 @@ com",
  
 ug_mobile_money();
 ```
-###```Francophone mobile money```
+
+
+### ```Francophone mobile money```
+
+
 This describes how to collect payments via mobile money for Franc.
 
 ```javascript
@@ -617,8 +627,7 @@ const franc_mobile_money =  async () =>{
             "tx_ref": "MC-158523s09v5050e8",
             "amount": "1500",
             "currency": "XAF",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "054709929220",
             "fullname": "Ekene Eze"
         }
@@ -633,7 +642,11 @@ com",
  
 franc_mobile_money();
 ```
-###```Zambia mobile money```
+
+
+### ```Zambia mobile money```
+
+
 This describes how to collect payments via  Zambia  mobile money.
 
 ```javascript
@@ -651,8 +664,7 @@ const zambia_mobile_money =  async () =>{
             "tx_ref": "MC-15852113s09v5050e8",
             "amount": "1500",
             "currency": "ZMW",
-            "email": "ekene@flw.
-com",
+            "email": "ekene@flw.com",
             "phone_number": "054709929220",
             "fullname": "Ekene Eze",
             "order_id": "URF_MMGH_1585323540079_5981535"
@@ -672,10 +684,12 @@ zambia_mobile_money();
 
 ## TOKENIZED CHARGES
 
-###```Charge with token```
+### ```Charge with token```
+
 This describes how to create a tokenized charge
 
 ```javascript
+
 const Flutterwave = require('flutterwave_node_3');
 
 const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
@@ -712,7 +726,8 @@ charge_with_token();
 
 
 
-###```Update token details```
+### ```Update token details```
+
 This describes how to update details tied to a card token
 
 ```javascript
@@ -747,7 +762,8 @@ update_token();
 ```
 
 
-###```Create bulk tokenized charge```
+### ```Create bulk tokenized charge```
+
 
 This describes how to charge multiple payment tokens at once
 
@@ -803,7 +819,9 @@ charge_bulk();
 ```
 
 
-###```Get a bulk tokenized charge status```
+### ```Get a bulk tokenized charge status```
+
+
 This describes how to get the status of a bulk tokenized charge
 
 ```javascript
@@ -832,7 +850,9 @@ fetchBulk();
 ```
 
 
-###```Get bulk tokenized charge transactions```
+### ```Get bulk tokenized charge transactions```
+
+
 This describes how to get specific bulk tokenized charge transactions
 
 ```javascript
@@ -863,7 +883,9 @@ fetch_charge_transactions();
 
 ## TRANSACTIONS
 
-###```Get all transactions```
+### ```Get all transactions```
+
+
 This describes how to fetch all transactions on your account
 
 ```javascript
@@ -895,7 +917,10 @@ const fetch_transactions = async () => {
 fetch_transactions();
 ```
 
-###```Get transaction fee```
+
+### ```Get transaction fee```
+
+
 This describes how Get transaction fees
 
 ```javascript
@@ -928,7 +953,8 @@ get_fee();
 ```
 
 
-###```Resend transaction webhook```
+### ```Resend transaction webhook```
+
 
 This describes how resend a failed transaction webhook to your server
 
@@ -963,7 +989,9 @@ resendHooks();
 
 
 
-###```Transaction refund```
+### ```Transaction refund```
+
+
 
 This describes how to initiate a transaction refund
 
@@ -997,7 +1025,9 @@ refund();
 
 ```
 
-###```Verify transaction```
+### ```Verify transaction```
+
+
 
 This describes how Verify transactions using the transaction reference tx_ref
 
@@ -1026,7 +1056,8 @@ verify();
 
 ```
 
-###```View transaction timeline```
+### ```View transaction timeline```
+
 
 This describes how view Transaction Timeline
 
@@ -1058,7 +1089,10 @@ View_Transaction_Timeline();
 
 ## TRANSFERS
 
-###```Create a transfer```
+
+### ```Create a transfer```
+
+
 This describes how to initiate a transfer
 
 ```javascript
@@ -1098,7 +1132,9 @@ initTrans();
 
 ```
 
-###```Create bulk transfer```
+### ```Create bulk transfer```
+
+
 This describes how to initiate a bulk transfer
 
 ```javascript
@@ -1149,7 +1185,9 @@ initBulk();
 ```
 
 
-###```Get transfer fee```
+### ```Get transfer fee```
+
+
 This describes how to get applicable transfer fee
 
 ```javascript
@@ -1183,7 +1221,9 @@ getFee();
 ```
 
 
-###```Get all transfers```
+### ```Get all transfers```
+
+
 This describes how to fetch all transfers on your account
 
 ```javascript
@@ -1218,7 +1258,9 @@ getAllTrans();
 
 ## VIRTUAL CARDS
 
-###```Create virtual card```
+### ```Create virtual card```
+
+
 This describes how to create a new virtual card
 
 ```javascript
@@ -1257,7 +1299,9 @@ VirtualCard.create(payload)
 createVcard();
 ```
 
-###```Get all virtual cards```
+### ```Get all virtual cards```
+
+
 This describes how to Get all virtual cards
 
 ```javascript
@@ -1284,7 +1328,7 @@ VirtualCard.fetch_all()
 fetchAllVcards();
 ```
 
-###```Get a virtual card```
+###  ```Get a virtual card```
 
 This describes how to fetch a virtual card
 
@@ -1316,7 +1360,7 @@ VirtualCard.fetch(payload)
 fetchVCard();
 ```
 
-###```Fund a virtual card```
+### ```Fund a virtual card```
 
 This describes how to fund an existing virtual card
 
@@ -1349,7 +1393,7 @@ fundCard();
 
 ```
 
-###```Terminate a virtual card```
+### ```Terminate a virtual card```
 
 This describes how to terminate a virtual card
 
@@ -1380,7 +1424,7 @@ terminateCard();
 
 ```
 
-###```Get virtual card transactions```
+### ```Get virtual card transactions```
 
 This describes how to fetch transactions by date range on a single card
 
@@ -1416,7 +1460,7 @@ getTransactions();
 
 ```
 
-###```Withdraw from a virtual card```
+### ```Withdraw from a virtual card```
 
 This describes how to withdraw existing funds from a virtual card
 
@@ -1450,7 +1494,7 @@ withdrawal();
 ```
 
 
-###```Block Virtual Cards```
+### ```Block Virtual Cards```
 
 This describes how to block a virtual card
 
@@ -1483,7 +1527,7 @@ blockCard();
 
 
 
-###```Unblock Virtual Cards```
+### ```Unblock Virtual Cards```
 
 This describes how to unblock a virtual card
 
@@ -1516,7 +1560,7 @@ unblockCard();
 
 ## VIRTUAL ACCOUNT NUMBERS
 
-###```Create a virtual account number```
+### ```Create a virtual account number```
 
 This describes how to create a virtual account number
 
@@ -1546,7 +1590,7 @@ VirtualAcct.create(payload)
 createAcct();
 ```
 
-###```Create bulk virtual account numbers```
+### ```Create bulk virtual account numbers```
 
 This describes how to create bulk virtual account numbers
 
@@ -1579,7 +1623,7 @@ createBulkAcct();
 ```
 
 
-###```Get bulk virtual account details```
+### ```Get bulk virtual account details```
 
 This describes how to fetch bulk virtual account numbers using batch id
 
@@ -1607,7 +1651,7 @@ const fetchBulk = async () => {
 fetchBulk();
 ```
 
-###```Get a virtual account number```
+###  ```Get a virtual account number```
 
 This describes how to fetch a virtual account number using order reference
 
@@ -1637,7 +1681,7 @@ fetch();
 
 ## MISC
 
-###```Get all wallet balances```
+### ```Get all wallet balances```
 
 This describes how to get all wallet balances
 
@@ -1664,7 +1708,7 @@ fetchBal();
 
 ```
 
-###```Get balances per currency```
+### ```Get balances per currency```
 
 This describes how to get balances for specific currencies
 
@@ -1693,7 +1737,7 @@ const fetchBal = async () => {
 fetchBal();
 ```
 
-###```Resolve account details```
+### ```Resolve account details```
 
 This describes how to resolve a bank account to get the account holder's details
 
@@ -1724,7 +1768,7 @@ resolveAcct();
 
 ```
 
-###```Resolve bvn details```
+### ```Resolve bvn details```
 
 This describes how to fetch bvn information
 
@@ -1757,7 +1801,7 @@ resolveBvn();
 
 ## BENEFICIARIES
 
-###```Create a beneficiary```
+### ```Create a beneficiary```
 
 This describes how to create a transfer beneficiary
 
@@ -1787,7 +1831,7 @@ createBeneficiary();
 
 ```
 
-###```List all beneficiaries```
+### ```List all beneficiaries```
 
 This describes how to get all beneficiaries
 
@@ -1813,7 +1857,7 @@ const fetchAllBeneficiary = async () => {
 fetchAllBeneficiary();
 ```
 
-###```Fetch a beneficiary```
+### ```Fetch a beneficiary```
 
 This describes how to get a single transfer beneficiary details
 
@@ -1845,7 +1889,7 @@ fetchBeneficiary();
 
 ```
 
-###```Delete a beneficiary```
+### ```Delete a beneficiary```
 
 This describes how to delete a transfer beneficiary
 
@@ -1880,7 +1924,7 @@ delBeneficiary();
 
 ## BANKS
 
-###```Get all banks```
+### ```Get all banks```
 
 This describes how to get list of banks you can transfer to
 
@@ -1910,7 +1954,7 @@ getBanks();
 
 ```
 
-###```Get bank branches```
+### ```Get bank branches```
 
 This describes how to get a list of bank branches
 
@@ -1943,7 +1987,7 @@ getBranches();
 
 ## SETTLEMENTS
 
-###```Get all settlements```
+### ```Get all settlements```
 
 This describes how to fetch all settlements
 
@@ -1971,7 +2015,7 @@ fetchSettlements();
 ```
 
 
-###```Get a settlement```
+### ```Get a settlement```
 
 This describes how to fetch and search all your settlements
 
@@ -2005,7 +2049,7 @@ fetchSettlement();
 
 ## SUBSCRIPTIONS
 
-###```Get all subscriptions```
+### ```Get all subscriptions```
 
 This describes how to get all subscriptions
 
@@ -2034,7 +2078,7 @@ fetchSubscription();
 ```
 
 
-###```Cancel a subscription```
+### ```Cancel a subscription```
 
 This describes how to cancel a subscription
 
@@ -2065,7 +2109,7 @@ cancelSubscription();
 ```
 
 
-###```Cancel a subscription```
+### ```Cancel a subscription```
 
 This describes how to activate a subscription
 
