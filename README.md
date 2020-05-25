@@ -107,6 +107,46 @@
 *   Cancel a subscription
 *   Activate a subscription
 
+**13**. **BILLS** 
+
+*   Create a bill payment
+*   Create bulk bills
+*   Get status of a bill payment
+*   Update bills order
+*   Validate bill service
+*   Get bill categories
+*   Get bill payment agencies
+*   Get amount to be paid for a product
+*   Get bill payments
+*   Get products under an agency
+*   Create order using billing code and product id
+
+**14**. **PAYMENT PLANS** 
+
+*   Create a payment plan
+*   Get payment plans
+*   Get a payment plan
+*   Update a payment plan
+*   Cancel a payment plan
+
+**15**. **SUBACCOUNTS** 
+
+*   Create a subaccount
+*   Fetch all subaccounts
+*   Fetch a subaccount
+*   Update a subaccount
+*   Delete a subaccount
+
+**16**. **EBILLS** 
+
+*   Place ebills order
+*   Update ebills order
+
+**17**. **OTPS** 
+
+*   Create Otp
+*   Validate Otp
+
 
 For more information on the services listed above, visit the [Flutterwave website](https://developer.flutterwave.com/v3.0/docs)
 
@@ -2138,3 +2178,914 @@ const activateSubscription = async () => {
 activateSubscription();
 
 ```
+
+
+## BILLS
+
+###  ```Create a bill payment```
+
+This describes how to create bill payments
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const createBill = async () => {
+
+    try {
+        const payload={
+            "country": "NG",
+            "customer": "+23490803840303",
+            "amount": 100,
+            "recurrence": "ONCE",
+            "type": "AIRTIME",
+            "reference": "930rwrwr0049404444"
+         }
+        
+        const response = await flw.Bills.create_bill(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+createBill();
+
+
+```
+
+###  ```Create bulk bills```
+
+This describes  how to create bulk bills payment
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const createBulkBill = async () => {
+
+    try {
+        const payload={
+            "bulk_reference": "edf-1243de5223d2f32",
+            "callback_url": "https://webhook.site/5f9a659a-11a2-4925-89cf-8a59ea6a019a",
+            "bulk_data": [
+               {
+                  "country": "NG",
+                  "customer": "+23490803840303",
+                  "amount": 500,
+                  "recurrence": "WEEKLY",
+                  "type": "AIRTIME",
+                  "reference": "9300wrwrw49200929"
+                },
+                {
+                  "country": "NG",
+                  "customer": "+23490803840304",
+                  "amount": 500,
+                  "recurrence": "WEEKLY",
+                  "type": "AIRTIME",
+                  "reference": "93003535rwr04912332"
+                }
+            ]
+          }
+        
+        const response = await flw.Bills.create_bulk(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+createBulkBill();
+
+
+```
+
+###  ```Get status of a bill payment```
+
+This describes  how to  get the status of a bill purchase
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const getStatus = async () => {
+
+    try {
+        const payload={
+            "reference": "9300049404444",
+        }
+        
+        const response = await flw.Bills.fetch_status(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+getStatus();
+
+
+```
+
+
+###  ```Update bills order```
+
+This describes  how to  update bills order
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const updateBills = async () => {
+
+    try {
+        const payload = {
+            "order_id": "be9c8abf-4611-46e9-85e7-5a2e8c5d7ab3",
+            "amount": "3814.13",
+            "reference": "FLWTTOT1000000019"
+        }
+
+        const response = await flw.Bills.update_bills(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+updateBills();
+
+```
+
+###  ```Validate bill service```
+
+This describes  how to validate services like DSTV smartcard no, Meter number etc.
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const validateBill = async () => {
+
+    try {
+        const payload = {
+            "item_code": "AT099",
+            "code": "BIL099",
+            "customer": "08038291822"
+        }
+
+        const response = await flw.Bills.validate(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+validateBill();
+
+```
+
+
+###  ```Get bill categories```
+
+This describes  how to fetch all bill categories on your account
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const getBillsCategories = async () => {
+
+    try {
+    
+        const response = await flw.Bills.fetch_bills_Cat()
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+getBillsCategories();
+
+```
+
+
+
+###  ```Get bill payment agencies```
+
+This describes  how to get all government agencies you can pay into
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const paymentAgencies = async () => {
+
+    try {
+    
+        const response = await flw.Bills.fetch_bills_agencies()
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+paymentAgencies();
+
+```
+
+
+
+###  ```Get amount to be paid for a product```
+
+This describes  how to get amount to be paid for a product
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+
+const amountToBePaid = async () => {
+
+    try {
+
+        const payload = {
+            "id": "BIL136", //This is the biller's code
+            "product_id": "OT150" //This is the item_code for the particular product
+        }
+
+        const response = await flw.Bills.amt_to_be_paid(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+amountToBePaid();
+
+```
+
+###  ```Get bill payments```
+
+This describes  how to get bill payments
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const getBillsPayment = async () => {
+
+    try {
+
+        const payload = {
+            "from": "2019-08-01", //This is the start date it can be in any of this formats: YYYY-MM-DDTHH:MM:SSZ or YYYY-MM-DD
+            "to": "2020-08-27",
+            "page":"1", //This is the page you want to start from
+            "reference":"+233494850059" //
+
+        }
+
+        const response = await flw.Bills.fetch_bills(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+getBillsPayment();
+
+
+```
+
+###  ```Get products under an agency```
+
+This describes  how to get all products under a government agency.
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const productsUnderAgency = async () => {
+
+    try {
+
+        const payload = {
+            "id": "BIL136" //This is the biller's code
+        }
+
+        const response = await flw.Bills.products_under_agency(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+productsUnderAgency();
+
+
+```
+
+
+###  ```Create order using billing code and product id```
+
+This describes  how to create an order using the biller code and the product Id
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const Createorder = async () => {
+
+    try {
+
+        const payload = {
+            "id": "BIL136", //This is the biller's code
+            "product_id": "OT151",
+            "amount": "3500.00",
+            "reference": "FLWTTOT19efe000000029",
+            "customer": {
+                "name": "emmanuel",
+                "email": "emmanuel@x.com",
+                "phone_number": "08060811638"
+            },
+            "fields": [{
+                    "id": "42107711:42107712",
+                    "quantity": "1",
+                    "value": "3500"
+                },
+                {
+                    "id": "42107710",
+                    "quantity": "1",
+                    "value": "t@x.com"
+                }
+            ]
+        }
+
+        const response = await flw.Bills.create_ord_billing(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+Createorder();
+
+```
+
+## PAYMENT PLANS
+
+
+###  ```Create payment plan```
+
+This describes  how to create a payment plan
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const createPaymentPlan = async () => {
+
+    try {
+
+        const payload = {
+            "amount": 500,
+            "name": "the olufemi obafunmiso plan 2", //This is the name of the payment, it will appear on the subscription reminder emails
+            "interval": "monthly", //This will determine the frequency of the charges for this plan. Could be monthly, weekly, etc.
+            "duration": 24 //This is the frequency, it is numeric, e.g. if set to 5 and intervals is set to monthly you would be charged 5 months, and then the subscription stops
+            
+        }
+
+        const response = await flw.PaymentPlan.create(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+createPaymentPlan();
+
+```
+
+
+###  ```Get payment plan```
+
+This describes  how to fetch all payment plans on your account
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const fetchAllPlans = async () => {
+
+    try {
+
+        const response = await flw.PaymentPlan.get_all()
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+fetchAllPlans();
+
+```
+
+###  ```Get a payment plan```
+
+This describes  how to get a single payment plan
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const fetchPlan = async () => {
+
+    try {
+        const payload = {
+            "id":"5443" //This is the unique ìdof the payment plan you want to fetch. It is returned in the call to create a payment plan asdata.id`
+        }
+
+        const response = await flw.PaymentPlan.get_plan(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+fetchPlan();
+
+```
+
+###  ```Update a payment plan```
+
+This describes  how to update an existing payment plan
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const updatePlan = async () => {
+
+    try {
+        const payload = {
+            "id":"5443", //This is the unique ìdof the payment plan you want to fetch. It is returned in the call to create a payment plan asdata.id`
+            "name": "January neighbourhood contribution",
+            "status": "active"
+        }
+
+        const response = await flw.PaymentPlan.update(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+updatePlan();
+
+```
+
+
+###  ```Cancel a payment plan```
+
+This describes  how to cancel an existing payment plan
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const cancelPlan = async () => {
+
+    try {
+        const payload = {
+            "id":"5443" //This is the unique ìd` of the payment plan you want to cancel
+            
+        }
+
+        const response = await flw.PaymentPlan.cancel(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+cancelPlan();
+
+```
+
+## SUBACCOUNTS
+
+###  ```Cancel a payment plan```
+
+This describes  how to create a subaccount on Flutterwave
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const createSubaccount = async () => {
+
+    try {
+        const payload = {
+            "account_bank": "044",
+            "account_number": "0690000037",
+            "business_name": "Eternal Blue",
+            "business_email": "petya@stux.net",
+            "business_contact": "Anonymous",
+            "business_contact_mobile": "090890382",
+            "business_mobile": "09087930450",
+            "country": "NG",
+            "meta": [
+                {
+                    "meta_name": "mem_adr",
+                    "meta_value": "0x16241F327213"
+                }
+            ],
+            "split_type": "percentage",
+            "split_value": 0.5
+        }
+
+        const response = await flw.Subaccount.create(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+createSubaccount();
+
+```
+
+
+
+###  ```Fetch all subaccounts```
+
+This describes  how to get all subaccounts
+
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+
+const fetchAllSubaccounts = async () => {
+
+    try {
+        
+
+        const response = await flw.Subaccount.fetch_all()
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+fetchAllSubaccounts();
+
+```
+
+
+
+###  ```Fetch a subaccount```
+
+This describes  how to fetch a subaccount using the sub-account's ID
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const fetchSubaccount = async () => {
+
+    try {
+
+        const payload = {
+            "subaccount_id":"RS_15869190C5C2F97CF98313B96BF941B1"
+        }
+        
+
+        const response = await flw.Subaccount.fetch(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+fetchSubaccount();
+
+```
+
+
+
+###  ```Update a subaccount```
+
+This describes  how to update a subaccount
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const updateSubaccount = async () => {
+
+    try {
+
+        const payload = {
+            "id": "3244", //This is the unique id of the subaccount you want to update. It is returned in the call to create a subaccount as data.id
+            "business_name": "Xyx lol!",
+            "business_email": "mad@o.enterprises",
+            "account_bank": "044",
+            "account_number": "0690000040",
+            "split_type": "flat",
+            "split_value": "200"
+        }
+
+
+        const response = await flw.Subaccount.update(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+updateSubaccount();
+
+
+```
+
+
+###  ```Delete a subaccount```
+
+This describes how to delete a subaccount
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const updateSubaccount = async () => {
+
+    try {
+
+        const payload = {
+            "id": "3244" //This is the unique id of the subaccount you want to update. It is returned in the call to create a subaccount as data.id
+        }
+
+
+        const response = await flw.Subaccount.delete(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+updateSubaccount();
+
+```
+## EBILLS
+
+###  ```Place ebills order```
+
+This describes how to create a new Ebills order
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const placeEbillsOrder = async () => {
+
+    try {
+
+        const payload = {
+            "narration": "mndkn blls",
+            "number_of_units": 2,
+            "currency": "NGN",
+            "amount": 200,
+            "phone_number": "09384747474",
+            "email": "jake@rad.com",
+            "tx_ref": "akhlm-pstmn-109470393",
+            "ip": "127.9.0.7",
+            "custom_business_name": "John Madakin",
+            "country": "NG"
+        }
+
+        const response = await flw.Ebills.order(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+placeEbillsOrder();
+
+
+```
+
+
+
+###  ```Update ebills order```
+
+This describes how to update order for ebills
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const updateEbillsOrder = async () => {
+
+    try {
+
+        const payload = {
+            "reference": "RVEBLS-843984E9B66E-23240", //This is the reference returned in the create order endpoint as flw_ref.
+            "currency": "NGN",
+            "amount": 100
+        }
+
+        const response = await flw.Ebills.update(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+updateEbillsOrder();
+
+
+```
+
+## OTPS
+
+###  ```Create Otp```
+
+This describes how to create an otp
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+const createOTP = async () => {
+
+    try {
+
+        const payload = {
+            "length": 7,
+            "customer": { "name": "Kazan", "email": "kazan@mailinator.com", "phone": "2348131149273" },
+            "sender": "log t",
+            "send": true,
+            "medium": ["email", "whatsapp"],
+            "expiry": 5
+        }
+
+        const response = await flw.Otp.create(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+createOTP();
+
+
+```
+
+
+###  ```Validate Otp```
+
+This describes how to validate an otp
+
+```javascript
+
+const Flutterwave = require('flutterwave_node_3');
+
+const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+
+
+const validateOTP = async () => {
+
+    try {
+
+        const payload = {
+            "reference": "CF-BARTER-20190420022611377491",
+            "otp": "481208"
+        }
+
+        const response = await flw.Otp.validate(payload)
+        console.log(response);
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
+validateOTP();
+
+
+```
+
