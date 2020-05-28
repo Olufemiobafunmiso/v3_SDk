@@ -26,7 +26,7 @@ function service(data, _rave) {
 
 			// params.seckey = _rave.getSecretKey();
 			params.method = "POST";
-			const uri = `v3/transactions/${params.flw_ref}/refund`
+			const uri = `v3/refunds`
 			return _rave.request(uri, params)
 
 		})
