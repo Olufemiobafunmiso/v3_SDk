@@ -9,10 +9,8 @@
 ```javascript
 const Ravepay = require('flutterwave-node');
 
-const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY, PRODUCTION_FLAG);
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
 ```
-
-If you pass `true` as the value for `PRODUCTION_FLAG`, the library will use the production url as the base for all calls. Otherwise it will use the staging base url.
 
  You can get your PUBLICK_KEY and SECRET_KEY from the Rave dashboard. 
 
