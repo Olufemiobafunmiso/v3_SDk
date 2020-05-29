@@ -1,6 +1,5 @@
+var forge = require("node-forge");
 function encrypt(key, text) {
-
-  var forge = require("node-forge");
   var cipher = forge.cipher.createCipher(
     "3DES-ECB",
     forge.util.createBuffer(key)
