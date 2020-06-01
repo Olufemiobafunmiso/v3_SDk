@@ -3,7 +3,7 @@ const q = require('q');
 
 
 const spec = morx.spec()
-	.build('tx_ref', 'required:true, eg:m0ckaham-1577988562446')
+	.build('id', 'required:true, eg:5708')
 	.end();
 
 function service(data, _rave) {
@@ -23,7 +23,7 @@ function service(data, _rave) {
 
 			// params.seckey = _rave.getSecretKey();
 			params.method = "POST";
-			const uri = `v3/transactions/${params.tx_ref}/resend-hook?`
+			const uri = `v3/transactions/${params.id}/resend-hook?`
 			return _rave.request(uri, params)
 
 		})

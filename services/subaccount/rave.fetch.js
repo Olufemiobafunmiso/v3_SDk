@@ -3,7 +3,7 @@ var q = require('q');
 const path = require('path')
 
 var spec = morx.spec()
-	.build('subaccount_id', 'required:true, eg:RS_C3FCBECF928B4B33B9C3BC74A357A9E5')
+	.build('id', 'required:true, eg:RS_C3FCBECF928B4B33B9C3BC74A357A9E5')
 	.end();
 
 function service(data, _rave) {

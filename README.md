@@ -9,8 +9,10 @@
 ```javascript
 const Ravepay = require('flutterwave-node');
 
-const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY);
+const rave = new Ravepay(PUBLICK_KEY, SECRET_KEY, PRODUCTION_FLAG);
 ```
+
+If you pass `true` as the value for **PRODUCTION_FLAG**, the library will use the production url as the base for all calls. Otherwise it will use the staging base url.
 
  You can get your PUBLICK_KEY and SECRET_KEY from the Rave dashboard. 
 
@@ -2754,7 +2756,7 @@ cancelPlan();
 
 ## SUBACCOUNTS
 
-###  ```Cancel a payment plan```
+###  ```Create a payment plan```
 
 This describes  how to create a subaccount on Flutterwave
 
@@ -2850,7 +2852,7 @@ const fetchSubaccount = async () => {
     try {
 
         const payload = {
-            "subaccount_id":"RS_15869190C5C2F97CF98313B96BF941B1"
+            "id":"5716"
         }
         
 

@@ -5,7 +5,7 @@ const q = require('q');
 
 const spec = morx.spec()
 
-    .build('tx_ref', 'required:true, eg:akhlm-pstmn-blkchrge-xx6')
+    .build('id', 'required:true, eg:akhlm-pstmn-blkchrge-xx6')
     .end();
 
 function service(data, _rave) {
@@ -29,7 +29,7 @@ function service(data, _rave) {
 
 
             params.method = "GET"
-            return _rave.request(`v3/transactions/${params.tx_ref}/verify`, params)
+            return _rave.request(`v3/transactions/${params.id}/verify`, params)
         })
         .then(response => {
 

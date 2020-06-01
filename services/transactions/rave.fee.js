@@ -6,8 +6,8 @@ const q = require('q');
 const spec = morx.spec()
 	.build('currency', 'required:false, eg:NGN')
 	.build('amount', 'required:true, eg:1000')
-	.build('p_type', 'required:false')
-	.build('card_6', 'required:false')
+	.build('payment_type', 'required:false')
+	.build('card_first6digits', 'required:false')
 	.end();
 
 function service(data, _rave) {
@@ -27,7 +27,7 @@ function service(data, _rave) {
 
 
 			params.method = "GET";
-			var uri = `/v3/transactions/fee?amount=${params.amount}&currency=${params.currency}`
+			var uri = `v3/transactions/fee?amount=${params.amount}&currency=${params.currency}`
 			return _rave.request(uri, params)
 
 		})
