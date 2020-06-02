@@ -15,7 +15,6 @@ var spec = morx.spec()
 	.build('meta', 'required:false')
 	.build('subaccounts', 'required:false')
 	.build('device_fingerprint', 'required:false')
-	.build('type', 'required:true eg:ussd')
 	.end();
 
 function service(data, _rave) {

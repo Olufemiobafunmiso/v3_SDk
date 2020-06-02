@@ -5,7 +5,7 @@ const q = require('q');
 
 var spec = morx.spec()
     .build('currency', 'required:true, eg:GHS')
-    .build('order_id', 'required:USS_URG_893982923s2323')
+    .build('order_id', 'required:true,eg:USS_URG_893982923s2323')
     .build('amount', 'required:true, eg:10')
     .build('phone_number', 'required:false, eg:08030930236')
     .build('email', 'required:true, eg:debowalefaulkner@gmail.com')

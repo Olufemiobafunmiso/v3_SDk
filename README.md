@@ -190,7 +190,7 @@ const payload = {
     "email": "olufemi@flw.com",
     "phone_number": "0902620185",
     "enckey": "611d0eda25a3c931863d92c4",
-    "tx_ref": "MC-3243e", // should be unique for every transaction
+    "tx_ref": "MC-3243e", // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
     "authorization": {
         "mode": "avs_noauth",
         "pin": "3310",
@@ -247,13 +247,13 @@ const charge_ng_acct = async () => {
     try {
 
         const payload = {
-            "tx_ref": "MC-1585dshdhdsdv5050e8",
-            "amount": "100",
-            "account_bank": "044",
+            "tx_ref": "MC-1585dshdhdsdv5050e8", //This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+            "amount": "100", //This is the amount to be charged.
+            "account_bank": "044", //This is the Bank numeric code. You can get a list of supported banks and their respective codes Here: https://developer.flutterwave.com/v3.0/reference#get-all-banks
             "account_number": "0690000037",
             "currency": "NGN",
             "email": "olufemi@flw.com",
-            "phone_number": "0902620185",
+            "phone_number": "0902620185", //This is the phone number linked to the customer's mobile money account
             "fullname": "Olufemi Obafunmiso"
         }
 
@@ -294,7 +294,7 @@ const charge_uk_acct = async () => {
         const payload = {
             "tx_ref": "MC-1585230ew9v5050e8",
             "amount": "100",
-            "account_bank": "00000",
+            "account_bank": "00000", //This is the Bank numeric code e.g 058
             "account_number": "0000000000",
             "currency": "GBP",
             "email": "olufemi@flw.com",
@@ -426,16 +426,15 @@ const ussd = async () => {
         try {
 
                 const payload = {
-                        "tx_ref": "MC-15852309v5050e8",
-                        "order_id": "USS_URG_8939829232323",
-                        "account_bank": "058",
-                        "amount": "1500",
-                        "type": "qr",
-                        "currency": "NGN",
-                        "email": "olufemi@flw.com",
-                        "phone_number": "054709929220",
-                        "fullname": "Olufemi Obafunmiso"
-                }
+        "tx_ref": "MC-15852309v5050e8", //This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+        "account_bank": "058", //This is the Bank numeric code e.g 058
+        "amount": "1500",
+        "currency": "NGN",
+        "email": "user@flw.com",
+        "phone_number": "07033923458",
+        "fullname": "Yemi Desola"
+}
+
                 const response = await flw.Charge.ussd(payload, rave)
                 console.log(response);
         } catch (error) {
@@ -469,7 +468,7 @@ const charg_voucher = async () => {
                     "amount": "100",
                     "type": "voucher_payment",
                     "currency": "ZAR",
-                    "pin": "19203804939000",
+                    "pin": "19203804939000", //This is the voucher pin given to the user after redemption at the agent location. They would provide this to you as the voucher code.
                     "email": "olufemi@flw.com",
                     "phone_number": "0902620185",
                     "fullname": "Olufemi Obafunmiso"
@@ -550,15 +549,21 @@ const Gh_mobilemoney =  async () =>{
     try {
 
         const payload = {
-            "tx_ref": "MC-158523s09v5050e8",
-            "order_id": "USS_URG_893982923s2323",
-            "amount": "1500",
-            "currency": "GHS",
-            "network":"MTN",
-            "email": "olufemi@flw.com",
-            "phone_number": "054709929220",
-            "fullname": "John Madakin"
+           "tx_ref": "MC-158523s09v5050e8",
+        "amount": "150",
+        "type": "mobile_money_ghana",
+        "currency": "GHS",
+        "voucher": "143256743",
+        "network": "MTN", //This is the customer's mobile money network provider (possible values: MTN, VODAFONE, TIGO)
+        "email": "user@gmail.com",
+        "phone_number": "054709929220",
+        "fullname": "John Madakin",
+        "client_ip": "154.123.220.1",
+        "device_fingerprint": "62wd23423rq324323qew1",
+        "meta": {
+            "flightID": "213213AS"
         }
+    }
 
        const response =  await flw.MobileMoney.ghana(payload, rave)
        console.log(response);
@@ -593,8 +598,8 @@ const rw_mobile_money =  async ()=>{
     try {
 
         const payload = {
-            "tx_ref": "MC-158523s09v5050e8",
-            "order_id": "USS_URG_893982923s2323",
+            "tx_ref": "MC-158523s09v5050e8", //This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+            "order_id": "USS_URG_893982923s2323", //Unique ref for the mobilemoney transaction to be provided by the merchant
             "amount": "1500",
             "currency": "RWF",
             "email": "olufemi@flw.com",
@@ -639,7 +644,7 @@ const ug_mobile_money =  async () =>{
             "currency": "UGX",
             "fullname": "Olufemi Obafunmiso",
             "redirect_url": "https://rave-webhook.herokuapp.com/receivepayment",
-            "voucher": "128373",
+            "voucher": "128373", //This is the voucher code generated by the customer. It is meant to be passed in the initial charge request. (only for Vodafone cash)
             "network": "MTN"
         }
 
@@ -715,7 +720,7 @@ const zambia_mobile_money =  async () =>{
             "email": "olufemi@flw.com",
             "phone_number": "054709929220",
             "fullname": "Olufemi Obafunmiso",
-            "order_id": "URF_MMGH_1585323540079_5981535"
+            "order_id": "URF_MMGH_1585323540079_5981535" //Unique identifier for the mobilemoney transaction to be provided by the merchant
         }
        const response =  await flw.MobileMoney.zambia(payload, rave)
        console.log(response);
@@ -749,14 +754,13 @@ const charge_with_token =  async()=>{
     try {
 
         const payload = {
-            "token": "flw-t1nf-cff007a7699efee339c9271b9be4f3d7-m03k",
+            "token": "flw-t1nf-cff007a7699efee339c9271b9be4f3d7-m03k", //This is the card token returned from the transaction verification endpoint as data.card.token
             "currency": "NGN",
             "country": "NG",
             "amount": 200,
             "email": "user@gmail.com",
             "first_name": "temi",
             "last_name": "desola",
-            "ip": "pstmn",
             "narration": "Sample tokenized charge",
             "tx_ref": "MC-1589482483218"
         }
@@ -824,14 +828,14 @@ const charge_bulk = async () => {
         const payload = {
             "title": "Staff salary for June",
             "retry_strategy": {
-                "retry_interval": 120,
-                "retry_amount_variable": 60,
-                "retry_attempt_variable": 2
+                "retry_interval": 120, //This is the number of mins it should take for the retry to happen
+                "retry_amount_variable": 60, //This is the amount that would be retried after the specified number of attempts in percentage
+                "retry_attempt_variable": 2 //This is the number of times the retry should happen
             },
             "bulk_data": [
                 {
                     "currency": "NGN",
-                    "token": "flw-t1nf-6de8b97a7e1abb221decad7887afa45a-m03k",
+                    "token": "flw-t1nf-6de8b97a7e1abb221decad7887afa45a-m03k", //This is the card token returned from the transaction verification endpoint as data.card.token
                     "country": "NG",
                     "amount": 3500,
                     "email": "user@example.com",
@@ -884,7 +888,7 @@ const fetchBulk = async () => {
 
     try {
 
-        const payload = {"bulk_id":"174"}
+        const payload = {"bulk_id":"174" //This is the id returned in the bulk charge response}
         const response = await flw.Tokenized.fetch_bulk(payload, rave)
         console.log(response);
     } catch (error) {
@@ -1057,7 +1061,7 @@ const refund = async () => {
 
 
         const payload = {
-            "flw_ref": "FLW-MOCK-09756b204cb2388cb982aaad3930d874",
+            "id": "5708", //This is the transaction unique identifier. It is returned in the initiate transaction call as data.id
             "amount":"10"
         }
         const response = await flw.Transaction.refund(payload)
@@ -1090,7 +1094,7 @@ const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
 const verify = async () => {
 
     try {
-        const payload = {"tx_ref": "rave-123wsvgfwefcwsfc456"}
+        const payload = {"id": "5708" //This is the transaction unique identifier. It is returned in the initiate transaction call as data.id}
         const response = await flw.Transaction.verify(payload)
         console.log(response);
     } catch (error) {
@@ -1121,7 +1125,7 @@ const View_Transaction_Timeline = async () => {
 
     try {
         const payload = {
-            "id": "1296063"}
+            "id": "1296063" //This is the unique transaction ID. It is returned in the verify transaction call as data.id}
         const response = await flw.Transaction.event(payload)
         console.log(response);
     } catch (error) {
@@ -1155,12 +1159,12 @@ const initTrans = async () => {
 
     try {
         const payload = {
-            "account_bank": "044",
+            "account_bank": "044", //This is the recipient bank code. Get list here :https://developer.flutterwave.com/v3.0/reference#get-all-banks
             "account_number": "0690000040",
             "amount": 200,
             "narration": "ionnodo",
             "currency": "NGN",
-            "reference": "ionnodoc",
+            "reference": "ionnodoc", //This is a merchant's unique reference for the transfer, it can be used to query for the status of the transfer
             "callback_url": "https://webhook.site/b3e505b0-fe02-430e-a538-22bbbce8ce0d",
             "debit_currency": "NGN"
         }
@@ -1392,7 +1396,7 @@ const fetchVCard = async () => {
 
     try {
         const payload = {
-            "id":"c6d7f40b-f772-47b7-8136-81256d2f87a2"
+            "id":"c6d7f40b-f772-47b7-8136-81256d2f87a2" //This is the unique id of the particular card you want to fetch its details. You can get this id from the call to create a virtual card or list virtual cards as data.id
         }
         const response = await flw.
 
@@ -1422,7 +1426,7 @@ const fundCard = async () => {
 
     try {
         const payload = {
-            "id":"c6d7f40b-f772-47b7-8136-81256d2f87a2",
+            "id":"c6d7f40b-f772-47b7-8136-81256d2f87a2", //This is the unique id of the particular card you want to fund. You can get this id from the call to create a virtual card as data.id
             "amount":500,
             "debit_currency":"NGN"
         }
