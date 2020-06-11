@@ -5,7 +5,7 @@ const encrypt = require('./encryp')
 
 
 var spec = morx.spec()
-	.build('type', 'required:true, eg:card')
+	.build('type', 'required:false, eg:card')
 	.build('otp', 'required:true, eg:12345')
 	.build('flw_ref', 'required:true, eg:RVFC6477605CE934')
 	.end();
@@ -26,7 +26,7 @@ function service(data, _rave) {
 
 
 
-			var uri = `v3/charges/validate`
+			var uri = `v3/validate-charge`
 
 			return _rave.request(uri, params)
 		})

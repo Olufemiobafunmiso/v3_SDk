@@ -174,57 +174,69 @@ This describes how to charge cards on flw.
 
 ```javascript
 const Flutterwave = require('flutterwave_node_3');
+const open = require('open');
 
 const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
-
-
-
 const payload = {
-    "card_number": "4556052704172643",
-    "cvv": "899",
-    "expiry_month": "01",
+    "card_number": "5531886652142950",
+    "cvv":"564",
+    "expiry_month": "09",
     "expiry_year": "21",
     "currency": "NGN",
-    "amount": "1000",
+    "amount": "100",
+    "redirect_url":"https://www.google.com",
     "fullname": "Olufemi Obafunmiso",
     "email": "olufemi@flw.com",
     "phone_number": "0902620185",
     "enckey": "611d0eda25a3c931863d92c4",
-    "tx_ref": "MC-3243e", // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
-    "authorization": {
-        "mode": "avs_noauth",
-        "pin": "3310",
-        "zipcode": "07205",
-        "city": "Hillside",
-        "address": "470 Mundet PI",
-        "state": "NJ",
-        "country": "US"
-
-    }
+    "tx_ref": "MC-32444ee--4eerye4euee3rerds4423e43e" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
 
 }
 
 
-flw.Charge.card(payload)
-    .then((call_charge) => {
-        if (call_charge.data.status === 'pending') {
-            const validate = flw.Charge.validate({
-                "otp": "12345",
-                "type": "card",
-                "flw_ref": call_charge.data.flw_ref
-            })
-            return validate
-                .then((res) => {
-                    console.log(res)
+const chargeCard = async () => {
+    try {
+        const response = await flw.Charge.card(payload)
+        if (response.meta.authorization.mode=='pin') {
+            var payload2 = payload
+            payload2.authorization = {
+                "mode": "pin",
+                "fields": [
+                    "pin"
+                ],
+                "pin": 3310
+            }
+            flw.Charge.card(payload2)
+                .then(async (res) => {
+                    const validateCharge = await flw.Charge.validate({
+                        "otp": "12345",
+                        "flw_ref": res.data.flw_ref
+                    })
+                    console.log(validateCharge)
+                }).catch((e) => {
+                    console.log(e)
+    
                 })
+    
         }
+        if (response.meta.authorization.mode=='redirect') {
+            
+            var url = response.meta.authorization.redirect
+            open(url)
+        }
+        
+    console.log(response)
 
-        console.log(call_charge)
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-    }).catch(err => {
-        console.log(err);
+chargeCard();
 
-    })
+
+
 
 ```
 
