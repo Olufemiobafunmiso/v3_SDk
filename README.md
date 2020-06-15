@@ -176,15 +176,15 @@ This describes how to charge cards on flw.
 const Flutterwave = require('flutterwave_node_3');
 const open = require('open');
 
-const flw = new Flutterwave(PUBLICK_KEY, SECRET_KEY);
+const flw = new Flutterwave("FLWPUBK-348ea9a0fef6ec91be8c3d323350f7fd-X", "FLWSECK-611d0eda25a3fdf506137831019c9197-X", false);
 const payload = {
     "card_number": "5531886652142950",
-    "cvv":"564",
+    "cvv": "564",
     "expiry_month": "09",
     "expiry_year": "21",
     "currency": "NGN",
     "amount": "100",
-    "redirect_url":"https://www.google.com",
+    "redirect_url": "https://www.google.com",
     "fullname": "Olufemi Obafunmiso",
     "email": "olufemi@flw.com",
     "phone_number": "0902620185",
@@ -197,8 +197,9 @@ const payload = {
 const chargeCard = async () => {
     try {
         const response = await flw.Charge.card(payload)
-        if (response.meta.authorization.mode=='pin') {
-            var payload2 = payload
+        console.log(response)
+        if (response.meta.authorization.mode === 'pin') {
+            let payload2 = payload
             payload2.authorization = {
                 "mode": "pin",
                 "fields": [
@@ -206,35 +207,30 @@ const chargeCard = async () => {
                 ],
                 "pin": 3310
             }
-            flw.Charge.card(payload2)
-                .then(async (res) => {
-                    const validateCharge = await flw.Charge.validate({
-                        "otp": "12345",
-                        "flw_ref": res.data.flw_ref
-                    })
-                    console.log(validateCharge)
-                }).catch((e) => {
-                    console.log(e)
-    
-                })
-    
+            const reCallCharge = await flw.Charge.card(payload2)
+
+            const callValidate = await flw.Charge.validate({
+                "otp": "12345",
+                "flw_ref": reCallCharge.data.flw_ref
+            })
+            console.log(callValidate)
+
         }
-        if (response.meta.authorization.mode=='redirect') {
-            
+        if (response.meta.authorization.mode === 'redirect') {
+
             var url = response.meta.authorization.redirect
             open(url)
         }
-        
-    console.log(response)
 
-        
+        console.log(response)
+
+
     } catch (error) {
         console.log(error)
     }
 }
 
 chargeCard();
-
 
 
 
@@ -269,7 +265,7 @@ const charge_ng_acct = async () => {
             "fullname": "Olufemi Obafunmiso"
         }
 
-        const response = await flw.Charge.ng(payload, rave)
+        const response = await flw.Charge.ng(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
@@ -314,7 +310,7 @@ const charge_uk_acct = async () => {
             "fullname": "Olufemi Obafunmiso"
         }
 
-        const response = await flw.Charge.uk(payload, rave)
+        const response = await flw.Charge.uk(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
@@ -359,7 +355,7 @@ const ach_payment = async () => {
         }
 }
 
-        const response = await flw.Charge.ach(payload, rave)
+        const response = await flw.Charge.ach(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
@@ -407,7 +403,7 @@ const  bank_trf = async () => {
             "is_permanent": 1,
         }
 
-        const response = await flw.Charge.bank_transfer(payload, rave)
+        const response = await flw.Charge.bank_transfer(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
@@ -447,7 +443,7 @@ const ussd = async () => {
         "fullname": "Yemi Desola"
 }
 
-                const response = await flw.Charge.ussd(payload, rave)
+                const response = await flw.Charge.ussd(payload)
                 console.log(response);
         } catch (error) {
                 console.log(error)
@@ -485,7 +481,7 @@ const charg_voucher = async () => {
                     "phone_number": "0902620185",
                     "fullname": "Olufemi Obafunmiso"
                 }
-                const response = await flw.Charge.voucher(payload, rave)
+                const response = await flw.Charge.voucher(payload)
                 console.log(response);
         } catch (error) {
                 console.log(error)
@@ -530,7 +526,7 @@ const mpesa =  async () =>{
             "fullname": "Olufemi Obafunmiso"
     }
 
-       const response =  await flw.MobileMoney.mpesa(payload, rave)
+       const response =  await flw.MobileMoney.mpesa(payload)
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -577,7 +573,7 @@ const Gh_mobilemoney =  async () =>{
         }
     }
 
-       const response =  await flw.MobileMoney.ghana(payload, rave)
+       const response =  await flw.MobileMoney.ghana(payload)
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -619,7 +615,7 @@ const rw_mobile_money =  async ()=>{
             "fullname": "John Madakin"
         }
 
-       const response =  await flw.MobileMoney.rwanda(payload, rave)
+       const response =  await flw.MobileMoney.rwanda(payload)
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -660,7 +656,7 @@ const ug_mobile_money =  async () =>{
             "network": "MTN"
         }
 
-       const response =  await flw.MobileMoney.uganda(payload, rave)
+       const response =  await flw.MobileMoney.uganda(payload)
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -696,7 +692,7 @@ const franc_mobile_money =  async () =>{
             "phone_number": "054709929220",
             "fullname": "Olufemi Obafunmiso"
         }
-       const response =  await flw.MobileMoney.franco_phone(payload, rave)
+       const response =  await flw.MobileMoney.franco_phone(payload)
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -734,7 +730,7 @@ const zambia_mobile_money =  async () =>{
             "fullname": "Olufemi Obafunmiso",
             "order_id": "URF_MMGH_1585323540079_5981535" //Unique identifier for the mobilemoney transaction to be provided by the merchant
         }
-       const response =  await flw.MobileMoney.zambia(payload, rave)
+       const response =  await flw.MobileMoney.zambia(payload)
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -776,7 +772,7 @@ const charge_with_token =  async()=>{
             "narration": "Sample tokenized charge",
             "tx_ref": "MC-1589482483218"
         }
-       const response =  await flw.Tokenized.charge(payload, rave)
+       const response =  await flw.Tokenized.charge(payload)
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -812,7 +808,7 @@ const update_token = async () => {
             "last_name": "Graham",
             "phone_number": "09090909990"
         }
-        const response = await flw.Tokenized.update_token(payload, rave)
+        const response = await flw.Tokenized.update_token(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
@@ -869,7 +865,7 @@ const charge_bulk = async () => {
                 }
             ]
         }
-        const response = await flw.Tokenized.bulk(payload, rave)
+        const response = await flw.Tokenized.bulk(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
@@ -901,7 +897,7 @@ const fetchBulk = async () => {
     try {
 
         const payload = {"bulk_id":"174" //This is the id returned in the bulk charge response}
-        const response = await flw.Tokenized.fetch_bulk(payload, rave)
+        const response = await flw.Tokenized.fetch_bulk(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
@@ -932,7 +928,7 @@ const fetch_charge_transactions = async () => {
     try {
 
         const payload = {"bulk_id":"174"}
-        const response = await flw.Tokenized.fetch_charge_transactions(payload, rave)
+        const response = await flw.Tokenized.fetch_charge_transactions(payload)
         console.log(response);
     } catch (error) {
         console.log(error)
